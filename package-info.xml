@@ -5,18 +5,34 @@
 	<id>Dougiefresh:UsersInBoardTopic</id>
 	<name>List Of Users In Topic or Board</name>
 	<type>modification</type>
-	<version>1.1</version>
+	<version>1.2</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
-		<modification>install.xml</modification>
+		<modification>install_20x.xml</modification>
 		<modification>language_english.xml</modification>
 		<modification>language_english-utf8.xml</modification>
 		<modification>language_dutch.xml</modification>
 		<modification>language_dutch-utf8.xml</modification>
 	</install>
 	<uninstall for="2.0 - 2.0.99">
-		<modification reverse="true">install.xml</modification>
+		<modification reverse="true">install_20x.xml</modification>
+		<modification reverse="true">language_english.xml</modification>
+		<modification reverse="true">language_english-utf8.xml</modification>
+		<modification reverse="true">language_dutch.xml</modification>
+		<modification reverse="true">language_dutch-utf8.xml</modification>
+	</uninstall>
+
+	<install for="2.1 Beta 1">
+		<readme parsebbc="true">readme.txt</readme>
+		<modification>install_21x.xml</modification>
+		<modification>language_english.xml</modification>
+		<modification>language_english-utf8.xml</modification>
+		<modification>language_dutch.xml</modification>
+		<modification>language_dutch-utf8.xml</modification>
+	</install>
+	<uninstall for="2.1 Beta 1">
+		<modification reverse="true">install_21x.xml</modification>
 		<modification reverse="true">language_english.xml</modification>
 		<modification reverse="true">language_english-utf8.xml</modification>
 		<modification reverse="true">language_dutch.xml</modification>
