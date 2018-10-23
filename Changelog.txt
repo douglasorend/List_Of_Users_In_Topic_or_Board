@@ -1,3 +1,7 @@
+v3.1 - October 22nd, 2018
+o No functionality change.
+o Updated documentation to point to new website.
+
 v3.0 - March 3rd, 2018
 o Rewrote mod so that most functions are done with hooks.
 o Added ability to change "view who's online" theme setting on mod settings page.
