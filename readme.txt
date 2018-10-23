@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]LIST OF USERS IN FORUM/TOPIC/BOARD v2.0[/b][/size][/color]
+[center][color=red][size=16pt][b]LIST OF USERS IN FORUM/TOPIC/BOARD v2.2[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4015]Link to Mod[/url]
 [/center]
 [hr]
@@ -18,7 +18,7 @@ o the Message Index ([nobbc]index.php?board=x[/nobbc])
 o the Post Display ([nobbc]index.php?t=x[/nobbc])
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
-This mod was tested on SMF 2.0.11, but should work on SMF 2.1 Beta 2, as well as SMF 2.0 and up.  SMF 1.x is not and will not be supported.
+This mod was tested on SMF 2.0.11, but should work on SMF 2.1 Beta 3, as well as SMF 2.0 and up.  SMF 2.1 Beta 1 and 2, as well as SMF 1.x, will not be supported.
 
 [color=blue][b][size=12pt][u]Translations[/u][/size][/b][/color]
 o Dutch translation by Fixit over at the [url=http://www.xptsp.com/board/]XPtsp.com forum[/url].

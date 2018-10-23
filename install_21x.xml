@@ -3,7 +3,7 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:UsersInTopic</id>
 <name>List Of Users In Forum/Board/Topic</name>
-<version>2.0</version>
+<version>2.2</version>
 	
 <!-------------------------------------------------------------------------->
 <!-- Source Modifications                                                 -->
@@ -47,12 +47,17 @@
 		'who' => 'ModifyWhosOnline',]]></add>
 	</operation>
 	<operation>
-		<search position="after"><![CDATA[array('int', 'lastActive'),]]></search>
+		<search position="after"><![CDATA[array('int', 'lastActive', 6, 'postinput' => $txt['minutes']),]]></search>
 		<add><![CDATA[// ]]></add>
 	</operation>
+</file>
+<file name="$sourcedir/ManageServer.php">
 	<operation>
-		<search position="after"><![CDATA[// Settings really associated with general security aspects.]]></search>
-		<add><![CDATA[// Settings related to Who's Online listings:
+		<search position="after"><![CDATA[/**
+ * Settings really associated with general security aspects.]]></search>
+		<add><![CDATA[/**
+ * // Settings related to Who's Online listings:
+ */
 function ModifyWhosOnline($return_config = false)
 {
 	global $txt, $scripturl, $context;
