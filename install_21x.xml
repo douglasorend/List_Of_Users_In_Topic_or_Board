@@ -3,246 +3,74 @@
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:UsersInTopic</id>
 <name>List Of Users In Forum/Board/Topic</name>
-<version>2.2</version>
+<version>2.3</version>
 	
-<!-------------------------------------------------------------------------->
-<!-- Source Modifications                                                 -->
-<!-------------------------------------------------------------------------->
-<file name="$sourcedir/Admin.php">
+<file name="$boarddir/index.php">
 	<operation>
-		<search position="before"><![CDATA['alerts' => array($txt['notifications']),]]></search>
-		<add><![CDATA[
-						'who' => array($txt['who_title']),]]></add>
+		<search position="replace"><![CDATA[return 'BoardIndex';]]></search>
+		<add><![CDATA[return 'LUTB_BoardIndex';]]></add>
 	</operation>
-</file>
-<file name="$sourcedir/BoardIndex.php">
 	<operation>
-		<search position="before"><![CDATA[$context['show_who'] = allowedTo('who_view') && !empty($modSettings['who_enabled']);]]></search>
-		<add><![CDATA[
-	$context['view_member_list'] = allowedTo('view_users_in_forum') && !empty($context['users_online']) && !empty($modSettings['who_enabled']);]]></add>
+		<search position="replace"><![CDATA[return 'MessageIndex';]]></search>
+		<add><![CDATA[return 'LUTB_MessageIndex';]]></add>
+	</operation>
+	<operation>
+		<search position="replace"><![CDATA[return 'Display';]]></search>
+		<add><![CDATA[return 'LUTB_Display';]]></add>
 	</operation>
 </file>
 <file name="$sourcedir/Display.php">
 	<operation>
-		<search position="before"><![CDATA[if (!empty($settings['display_who_viewing'])]]></search>
-		<add><![CDATA[ && allowedTo('view_users_in_topic') && !empty($modSettings['who_enabled'])]]></add>
-	</operation>
-	<operation>
-		<search position="before"><![CDATA[if (!empty($row['online_color'])]]></search>
-		<add><![CDATA[ && empty($modSettings['who_view_no_colored'])]]></add>
-	</operation>
-</file>
-<file name="$sourcedir/ManagePermissions.php">
-	<operation>
-		<search position="replace"><![CDATA['who_view' => array(false, 'general'),]]></search>
-		<add><![CDATA['who_view' => array(false, 'general'),
-			'view_users_in_board' => array(false, 'general'),
-			'view_users_in_topic' => array(false, 'general'),]]></add>
+		<search position="after"><![CDATA[mg.online_color, mg.id_group, mg.group_name]]></search>
+		<add><![CDATA[' . (!empty($modSettings['who_view_no_colored']) ? '0 AS ' : '') . ']]></add>
 	</operation>
 </file>
 <file name="$sourcedir/ManageSettings.php">
 	<operation>
 		<search position="before"><![CDATA['profileedit' => 'EditCustomProfiles',]]></search>
 		<add><![CDATA[
-		'who' => 'ModifyWhosOnline',]]></add>
-	</operation>
-	<operation>
-		<search position="after"><![CDATA[array('int', 'lastActive', 6, 'postinput' => $txt['minutes']),]]></search>
-		<add><![CDATA[// ]]></add>
-	</operation>
-</file>
-<file name="$sourcedir/ManageServer.php">
-	<operation>
-		<search position="after"><![CDATA[/**
- * Settings really associated with general security aspects.]]></search>
-		<add><![CDATA[/**
- * // Settings related to Who's Online listings:
- */
-function ModifyWhosOnline($return_config = false)
-{
-	global $txt, $scripturl, $context;
-
-	loadLanguage('ManagePermissions');
-	$txt['who_permissions'] = $txt['online_users'] . ': ' . $txt['permissionname_manage_permissions'];
-	$config_vars = array(
-		// Users online?
-		array('check', 'who_enabled'),
-		array('int', 'lastActive'),
-		array('check', 'who_view_no_colored'),
-		//'',
-		// Membergroups with permission to see other users online:
-		array('title', 'who_permissions'),
-		array('permissions', 'who_view'),
-		array('permissions', 'view_users_in_board'),
-		array('permissions', 'view_users_in_topic'),
-	);
-	if ($return_config)
-		return $config_vars;
-
-	// Saving?
-	if (isset($_GET['save']))
-	{
-		checkSession();
-		saveDBSettings($config_vars);
-		writeLog();
-		redirectexit('action=admin;area=featuresettings;sa=who');
-	}
-	$context['post_url'] = $scripturl . '?action=admin;area=featuresettings;sa=who;save';
-	$context['settings_title'] = $txt['who_title'];
-	prepareDBSettingContext($config_vars);
-}
-
-]]></add>
+		'who' => 'LUTB_Settings',]]></add>
 	</operation>
 </file>
 <file name="$sourcedir/MessageIndex.php">
 	<operation>
-		<search position="before"><![CDATA[if (!empty($settings['display_who_viewing'])]]></search>
-		<add><![CDATA[ && allowedTo('view_users_in_board') && !empty($modSettings['who_enabled'])]]></add>
-	</operation>
-	<operation>
-		<search position="before"><![CDATA[if (!empty($row['online_color'])]]></search>
-		<add><![CDATA[ && empty($modSettings['who_view_no_colored'])]]></add>
+		<search position="after"><![CDATA[mg.online_color, mg.id_group, mg.group_name]]></search>
+		<add><![CDATA[' . (!empty($modSettings['who_view_no_colored']) ? '0 AS ' : '') . ']]></add>
 	</operation>
 </file>
 <file name="$sourcedir/Subs-MembersOnline.php">
 	<operation>
-		<search position="before"><![CDATA[if (!empty($row['online_color'])]]></search>
-		<add><![CDATA[ && empty($modSettings['who_view_no_colored'])]]></add>
-	</operation>
-</file>
-
-<!-------------------------------------------------------------------------->
-<!-- Template Modifications                                               -->
-<!-------------------------------------------------------------------------->
-<file name="$themedir/BoardIndex.template.php">
-	<operation>
-		<search position="replace"><![CDATA[if (!empty($context['users_online']))]]></search>
-		<add><![CDATA[if (!empty($context['view_member_list']))]]></add>
-	</operation>
-</file>
-<file name="$themedir/Display.template.php">
-	<operation>
-		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
-	{
-		echo '
-				<p>';
-
-		// Show just numbers...?
-		if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
-		// Or show the actual people viewing the topic?
-		else
-			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-
-		// Now show how many guests are here too.
-		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
-				</p>';
-	}]]></search>
-		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
-	if (!empty($settings['display_who_viewing']))
-	{
-		echo '
-				<p>';
-
-		// Show just numbers...?
-		if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
-		// Or show the actual people viewing the topic?
-		else
-			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-
-		// Now show how many guests are here too.
-		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
-				</p>';
-	}
-	/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
-	</operation>
-	<operation>
-		<search position="replace"><![CDATA[// Show the jumpto box, or actually...let Javascript do it.]]></search>
-		<add><![CDATA[// Show everybody who has viewed this topic within the last 15 minutes:
-	if (isset($context['view_members_list']))
-	{
-		echo '
-			<div class="tborder" id="topic_icons">
-				<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
-				<div class="information">
-					', $txt['users_browsing_topic'] . ':<br/>';
-
-		if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
-		// Or show the actual people viewing the topic?
-		else
-			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-
-		// Now show how many guests are here too.
-		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
-		
-		echo '</div>
-			</div>';
-	}
-	
-	// Show the jumpto box, or actually...let Javascript do it.]]></add>
+		<search position="after"><![CDATA[mg.online_color, mg.id_group, mg.group_name]]></search>
+		<add><![CDATA[' . (!empty($modSettings['who_view_no_colored']) ? '0 AS ' : '') . ']]></add>
 	</operation>
 </file>
 <file name="$themedir/MessageIndex.template.php">
 	<operation>
-		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
+		<search position="before"><![CDATA[if (!empty($settings['display_who_viewing']))
 		{
 		echo '
-			<div class="information">';
-			if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) === 1 ? $txt['who_member'] : $txt['members'];
-		else
-				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . (empty($context['view_num_hidden']) || $context['can_moderate_forum'] ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'];
-
-		echo '
-			</div>';
-		}]]></search>
-		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
-		if (!empty($settings['display_who_viewing']))
-		{
-		echo '
-			<div class="information">';
-			if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) === 1 ? $txt['who_member'] : $txt['members'];
-		else
-				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . (empty($context['view_num_hidden']) || $context['can_moderate_forum'] ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'];
-
-		echo '
-			</div>';
-		}
-		/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+			<div class="]]></search>
+		<add><![CDATA[whoisviewing ]]></add>
 	</operation>
+</file>
+<file name="$themedir/Display.template.php">
 	<operation>
-		<search position="before"><![CDATA[// Show breadcrumbs at the bottom too.
-	theme_linktree();]]></search>
-		<add><![CDATA[
-
-	// Show everybody who has viewed this topic within the last 15 minutes:
-	if (isset($context['view_members_list']))
+		<search position="before"><![CDATA[if (!empty($settings['display_who_viewing']))
 	{
 		echo '
-	<div class="tborder" id="topic_icons">
-		<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
-		<div class="information">
-			<div class="plainbox">' . $txt['users_browsing_board'] . ':<br/>';
-
-		if ($settings['display_who_viewing'] == 1)
-				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
-		// Or show the actual people viewing the topic?
-		else
-			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
-
-		// Now show how many guests are here too.
-		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
-		
-		echo '</div>
-		</div>
-	</div>';
-	}]]></add>
+				<p]]></search>
+		<add><![CDATA[ class="whoisviewing"]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA[<div class="pagesection">
+				', template_button_strip($context['normal_buttons'], 'right'), '
+				', $context['menu_separator'], '<a href="#main_content_section" class="topbottom floatleft" id="bot">', $txt['go_up'], '</a>
+				<div class="pagelinks floatleft">
+					', $context['page_index'], '
+				</div>
+			</div>]]></search>
+		<add><![CDATA[
+			<div id="whoisonline_bottom"></div>]]></add>
 	</operation>
 </file>
 </modification>

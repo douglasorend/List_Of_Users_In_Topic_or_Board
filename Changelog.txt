@@ -1,3 +1,11 @@
+v3.0 - March 3rd, 2018
+o Rewrote mod so that most functions are done with hooks.
+o Added ability to change "view who's online" theme setting on mod settings page.
+o Added ability to change whether the "who's online" block is on top or bottom.
+o All language files converted to PHP language files, for ease of translation.
+o Added Spanish Latin translation, courtsey of [url=https://www.simplemachines.org/community/index.php?action=profile;u=322597]Rock Lee[/url].
+o Updated Dutch translation, courtsey of [url=https://www.simplemachines.org/community/index.php?action=profile;u=287786]@rjen[/url].
+
 v2.2 - July 7th, 2017
 o Added support for SMF 2.1 Beta 3.
 o Removed support for SMF 2.1 Beta 1 and 2.

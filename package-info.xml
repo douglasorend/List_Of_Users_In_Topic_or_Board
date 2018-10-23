@@ -5,47 +5,63 @@
 	<id>Dougiefresh:UsersInBoardTopic</id>
 	<name>List Of Users In Forum/Board/Topic</name>
 	<type>modification</type>
-	<version>2.2</version>
+	<version>3.0</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
+		<code>add_remove_hooks.php</code>
 		<modification>install_20x.xml</modification>
-		<modification>language_english.xml</modification>
-		<modification>language_english-utf8.xml</modification>
-		<modification>language_dutch.xml</modification>
-		<modification>language_dutch-utf8.xml</modification>
-		<modification>language_spanish_es.xml</modification>
-		<modification>language_spanish_es-uft8.xml</modification>
+		<require-file name="Subs-LUTB.php" destination="$sourcedir" />
+		<require-file name="LUTB.dutch.php" destination="$languagedir" />
+		<require-file name="LUTB.dutch-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.english.php" destination="$languagedir" />
+		<require-file name="LUTB.english-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_es.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_es-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_latin.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_latin-utf8.php" destination="$languagedir" />
 		<redirect timeout="5000" url="?action=admin;area=featuresettings;sa=who" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
+		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_20x.xml</modification>
-		<modification reverse="true">language_english.xml</modification>
-		<modification reverse="true">language_english-utf8.xml</modification>
-		<modification reverse="true">language_dutch.xml</modification>
-		<modification reverse="true">language_dutch-utf8.xml</modification>
-		<modification reverse="true">language_spanish_es.xml</modification>
-		<modification reverse="true">language_spanish_es-uft8.xml</modification>
+		<remove-file name="$sourcedir/Subs-LUTB.php" />
+		<remove-file name="$languagedir/LUTB.dutch.php" />
+		<remove-file name="$languagedir/LUTB.dutch-utf8.php" />
+		<remove-file name="$languagedir/LUTB.english.php" />
+		<remove-file name="$languagedir/LUTB.english-utf8.php" />
+		<remove-file name="$languagedir/LUTB.spanish_es.php" />
+		<remove-file name="$languagedir/LUTB.spanish_es-utf8.php" />
+		<remove-file name="$languagedir/LUTB.spanish_latin.php" />
+		<remove-file name="$languagedir/LUTB.spanish_latin-utf8.php" />
 	</uninstall>
 
 	<install for="2.1 Beta 1">
+		<code>add_remove_hooks.php</code>
 		<readme parsebbc="true">readme.txt</readme>
 		<modification>install_21x.xml</modification>
-		<modification>language_english.xml</modification>
-		<modification>language_english-utf8.xml</modification>
-		<modification>language_dutch.xml</modification>
-		<modification>language_dutch-utf8.xml</modification>
-		<modification>language_spanish_es.xml</modification>
-		<modification>language_spanish_es-uft8.xml</modification>
+		<require-file name="Subs-LUTB.php" destination="$sourcedir" />
+		<require-file name="LUTB.dutch.php" destination="$languagedir" />
+		<require-file name="LUTB.dutch-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.english.php" destination="$languagedir" />
+		<require-file name="LUTB.english-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_es.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_es-utf8.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_latin.php" destination="$languagedir" />
+		<require-file name="LUTB.spanish_latin-utf8.php" destination="$languagedir" />
 		<redirect timeout="5000" url="?action=admin;area=featuresettings;sa=who" />
 	</install>
 	<uninstall for="2.1 Beta 1">
+		<code>add_remove_hooks.php</code>
 		<modification reverse="true">install_21x.xml</modification>
-		<modification reverse="true">language_english.xml</modification>
-		<modification reverse="true">language_english-utf8.xml</modification>
-		<modification reverse="true">language_dutch.xml</modification>
-		<modification reverse="true">language_dutch-utf8.xml</modification>
-		<modification reverse="true">language_spanish_es.xml</modification>
-		<modification reverse="true">language_spanish_es-uft8.xml</modification>
+		<remove-file name="$sourcedir/Subs-LUTB.php" />
+		<remove-file name="$languagedir/LUTB.dutch.php" />
+		<remove-file name="$languagedir/LUTB.dutch-utf8.php" />
+		<remove-file name="$languagedir/LUTB.english.php" />
+		<remove-file name="$languagedir/LUTB.english-utf8.php" />
+		<remove-file name="$languagedir/LUTB.spanish_es.php" />
+		<remove-file name="$languagedir/LUTB.spanish_es-utf8.php" />
+		<remove-file name="$languagedir/LUTB.spanish_latin.php" />
+		<remove-file name="$languagedir/LUTB.spanish_latin-utf8.php" />
 	</uninstall>
 </package-info>
