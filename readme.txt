@@ -1,28 +1,34 @@
 [hr]
-[center][color=red][size=16pt][b]LIST OF USERS IN TOPIC OR BOARD v1.2[/b][/size][/color]
+[center][color=red][size=16pt][b]LIST OF USERS IN FORUM/TOPIC/BOARD v2.0[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4015]Link to Mod[/url]
 [/center]
 [hr]
 
 [color=blue][b][size=12pt][u]Introduction[/u][/size][/b][/color]
-This mod modifies the Message Index and Post Display templates so that list of users in the board or topic is moved [b]from[/b] above the topic list or start of the post [b]to[/b] just above the Quick Reply box, and adds phpBB-like styling to the list.
-
-The "Show who is viewing the board index and posts" option in [b]Theme Settings[/b] has been removed, in favor of permissions, which have been added to allow membergroups to be able to view the list for the Message Index and Post Display.
+This mod modifies the Message Index and Post Display templates so that list of users in the board or topic is moved [b]from[/b] above the topic list or start of the post [b]to[/b] just above the Quick Reply box, and adds phpBB-like styling to the list.  It also alters the Board Index so that the list of users online is controlled by permission.
 
 [color=blue][b][size=12pt][u]Admin Settings[/u][/size][/b][/color]
-Permissions to enable the mod for each membergroup is available in the Admin Center.
+There is a new admin page at [b]Admin[/b] -> [b]Features and Options[/b] -> [b]Who's Online[/b].  It takes the [b]Enable Who's Online list[/b] and [b]User online time threshold[/b] options from [b]General[/b] tab and places them under the [b]Who's Online[/b].
+
+There is a new option in v2.0 that removes the membergroup coloring that the user belongs to from the users online list.
+
+There are 3 new permisions that allow membergroups to be able to view the users online list for:
+o the Board Index ([nobbc]/index.php[/nobbc])
+o the Message Index ([nobbc]index.php?board=x[/nobbc])
+o the Post Display ([nobbc]index.php?t=x[/nobbc])
 
 [color=blue][b][size=12pt][u]Compatibility Notes[/u][/size][/b][/color]
-This mod was tested on SMF 2.0.9, but should work on SMF 2.1 Beta 1, as well as SMF 2.0 and up.  SMF 1.x is not and will not be supported.
+This mod was tested on SMF 2.0.11, but should work on SMF 2.1 Beta 2, as well as SMF 2.0 and up.  SMF 1.x is not and will not be supported.
 
 [color=blue][b][size=12pt][u]Translations[/u][/size][/b][/color]
 o Dutch translation by Fixit over at the [url=http://www.xptsp.com/board/]XPtsp.com forum[/url].
+o Spanish translation by [url=http://www.simplemachines.org/community/index.php?action=profile;u=422971]d3vcho[/url]!
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
 The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=132.msg182#msg182]XPtsp.com[/url].
 
 [color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
-Copyright (c) 2015, Douglas Orend
+Copyright (c) 2015 - 2016, Douglas Orend
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

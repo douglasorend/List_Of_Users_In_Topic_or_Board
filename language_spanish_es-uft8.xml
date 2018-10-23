@@ -6,32 +6,31 @@
 <version>2.0</version>
 
 <!-------------------------------------------------------------------------->
-<!-- Language file edits (dutch-utf8 - Modifications & PersonalMessage)   -->
+<!-- Language file edits (Spanish_es - Modifications & PersonalMessage)      -->
 <!-------------------------------------------------------------------------->
-<file name="$languagedir/index.dutch-utf8.php" error="skip">
+<file name="$languagedir/index.spanish_es-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
-$txt['users_browsing_topic'] = 'Gebruikers die in de laatste 15 minuten dit topic lezen';
-$txt['users_browsing_board'] = 'Gebruikers die in de laatste 15 minuten dit board lezen';
-
+$txt['users_browsing_topic'] = 'Usuarios viendo este tema en los últimos 15 minutos';
+$txt['users_browsing_board'] = 'Usuarios viendo este foro en los últimos 15 minutos';
 ]]></add>
 	</operation>
 </file>
-<file name="$languagedir/ManagePermissions.dutch-utf8.php" error="skip">
+<file name="$languagedir/ManagePermissions.spanish_es-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
 // $txt['permissionname_view_users_in_forum'] = 'View users browsing forum';
 // $txt['permissionhelp_view_users_in_forum'] = 'This permission allows users to see who is also browsing the forum.';
-$txt['permissionname_view_users_in_topic'] = 'Bekijk gebruikers in topics';
-$txt['permissionhelp_view_users_in_topic'] = 'Deze permissie staat toe gebruikers te laten zien wie er in topics lezen.';
-$txt['permissionname_view_users_in_board'] = 'Bekijk gebruikers in boards';
-$txt['permissionhelp_view_users_in_board'] = 'Deze permissie staat toe gebruikers te laten zien wie er in boards lezen.';
+$txt['permissionname_view_users_in_topic'] = 'Ver usuarios viendo temas';
+$txt['permissionhelp_view_users_in_topic'] = 'Este permiso permite a los usuarios ver quién más está viendo en el tema en el que ellos están.';
+$txt['permissionname_view_users_in_board'] = 'Ver usuarios viendo foros';
+$txt['permissionhelp_view_users_in_board'] = 'Este permiso permite a los usuarios ver quién más está viendo en el foro en el que ellos están.';
 ]]></add>
 	</operation>
 </file>
-<file name="$languagedir/ManageSettings.dutch-utf8.php" error="skip">
+<file name="$languagedir/ManageSettings.spanish_es-utf8.php" error="skip">
 	<operation>
 		<search position="end" />
 		<add><![CDATA[
@@ -42,4 +41,4 @@ $txt['permissionhelp_view_users_in_board'] = 'Deze permissie staat toe gebruiker
 ]]></add>
 	</operation>
 </file>
-</modification>
+</modification></modification>

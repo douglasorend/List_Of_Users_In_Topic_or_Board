@@ -3,9 +3,9 @@
 
 <package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
 	<id>Dougiefresh:UsersInBoardTopic</id>
-	<name>List Of Users In Topic or Board</name>
+	<name>List Of Users In Forum/Board/Topic</name>
 	<type>modification</type>
-	<version>1.2</version>
+	<version>2.0</version>
 
 	<install for="2.0 - 2.0.99">
 		<readme parsebbc="true">readme.txt</readme>
@@ -14,6 +14,9 @@
 		<modification>language_english-utf8.xml</modification>
 		<modification>language_dutch.xml</modification>
 		<modification>language_dutch-utf8.xml</modification>
+		<modification>language_spanish_es.xml</modification>
+		<modification>language_spanish_es-uft8.xml</modification>
+		<redirect timeout="5000" url="?action=admin;area=featuresettings;sa=who" />
 	</install>
 	<uninstall for="2.0 - 2.0.99">
 		<modification reverse="true">install_20x.xml</modification>
@@ -21,6 +24,8 @@
 		<modification reverse="true">language_english-utf8.xml</modification>
 		<modification reverse="true">language_dutch.xml</modification>
 		<modification reverse="true">language_dutch-utf8.xml</modification>
+		<modification reverse="true">language_spanish_es.xml</modification>
+		<modification reverse="true">language_spanish_es-uft8.xml</modification>
 	</uninstall>
 
 	<install for="2.1 Beta 1">
@@ -30,6 +35,9 @@
 		<modification>language_english-utf8.xml</modification>
 		<modification>language_dutch.xml</modification>
 		<modification>language_dutch-utf8.xml</modification>
+		<modification>language_spanish_es.xml</modification>
+		<modification>language_spanish_es-uft8.xml</modification>
+		<redirect timeout="5000" url="?action=admin;area=featuresettings;sa=who" />
 	</install>
 	<uninstall for="2.1 Beta 1">
 		<modification reverse="true">install_21x.xml</modification>
@@ -37,5 +45,7 @@
 		<modification reverse="true">language_english-utf8.xml</modification>
 		<modification reverse="true">language_dutch.xml</modification>
 		<modification reverse="true">language_dutch-utf8.xml</modification>
+		<modification reverse="true">language_spanish_es.xml</modification>
+		<modification reverse="true">language_spanish_es-uft8.xml</modification>
 	</uninstall>
 </package-info>

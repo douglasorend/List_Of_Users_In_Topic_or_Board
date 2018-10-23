@@ -2,30 +2,42 @@
 <!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
 <modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
 <id>Dougiefresh:UsersInBoardTopic</id>
-<name>List Of Users In Board/Topic</name>
-<version>1.2</version>
+<name>List Of Users In Forum/Board/Topic</name>
+<version>2.0</version>
 
 <!-------------------------------------------------------------------------->
 <!-- Language file edits (Dutch - Modifications & PersonalMessage)      -->
 <!-------------------------------------------------------------------------->
 <file name="$languagedir/index.dutch.php" error="skip">
 	<operation>
-		<search position="before"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
+		<search position="end" />
 		<add><![CDATA[
 $txt['users_browsing_topic'] = 'Gebruikers die in de laatste 15 minuten dit topic lezen';
 $txt['users_browsing_board'] = 'Gebruikers die in de laatste 15 minuten dit board lezen';
-
 ]]></add>
 	</operation>
 </file>
 <file name="$languagedir/ManagePermissions.dutch.php" error="skip">
 	<operation>
-		<search position="before"><![CDATA[$txt['permissionname_search_posts'] = 'Zoeken naar berichten en topics';]]></search>
+		<search position="end" />
 		<add><![CDATA[
+// $txt['permissionname_view_users_in_forum'] = 'View users browsing forum';
+// $txt['permissionhelp_view_users_in_forum'] = 'This permission allows users to see who is also browsing the forum.';
 $txt['permissionname_view_users_in_topic'] = 'Bekijk gebruikers in topics';
 $txt['permissionhelp_view_users_in_topic'] = 'Deze permissie staat toe gebruikers te laten zien wie er in topics lezen.';
 $txt['permissionname_view_users_in_board'] = 'Bekijk gebruikers in boards';
 $txt['permissionhelp_view_users_in_board'] = 'Deze permissie staat toe gebruikers te laten zien wie er in boards lezen.';
+]]></add>
+	</operation>
+</file>
+<file name="$languagedir/ManageSettings.dutch.php" error="skip">
+	<operation>
+		<search position="end" />
+		<add><![CDATA[
+// $txt['who_view_no_colored'] = 'Disable showing membergroups in color?';
+// $txt['view_users_in_forum'] = 'On Board Index:';
+// $txt['view_users_in_board'] = 'On Message Index:';
+// $txt['view_users_in_topic'] = 'On Topic Display:';
 ]]></add>
 	</operation>
 </file>

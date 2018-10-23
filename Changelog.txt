@@ -1,3 +1,11 @@
+v2.0 - January 17th, 2016
+o Linked displaying all member lists to the "Enable Who's Online" checkbox.
+o Added new permission to deny/allow showing member list on board index.
+o Added [b]Who's Online[/b] under [b]Features and Options[/b] to deal with permissions and options.
+o Added option to remove the membergroup color code from the members' username.
+o Restored option from [b]Themes/[/b]{theme}[b]/Settings.template.php[/b] that was commented out.
+o Added UTF8 and regular Spanish translation to the mod.
+
 v1.2 - April 6th, 2015
 o Updated for SMF 2.1 Beta 1
 
