@@ -1,5 +1,5 @@
 [hr]
-[center][color=red][size=16pt][b]LIST OF USERS IN TOPIC OR BOARD v1.0[/b][/size][/color]
+[center][color=red][size=16pt][b]LIST OF USERS IN TOPIC OR BOARD v1.1[/b][/size][/color]
 [url=http://www.simplemachines.org/community/index.php?action=profile;u=253913][b]By Dougiefresh[/b][/url] -> [url=http://custom.simplemachines.org/mods/index.php?mod=4015]Link to Mod[/url]
 [/center]
 [hr]
@@ -19,11 +19,16 @@ This mod was tested on SMF 2.0.9, but should work on SMF 2.0 and up.
 o Dutch translation by Fixit over at the [url=http://www.xptsp.com/board/]XPtsp.com forum[/url].
 
 [color=blue][b][size=12pt][u]Changelog[/u][/size][/b][/color]
-[quote]
-[b][u]v1.0 - December 20th, 2014[/u][/b]
-o Initial Release of the mod
-[/quote]
+The changelog has been removed and can be seen at [url=http://www.xptsp.com/board/index.php?topic=132.msg182#msg182]XPtsp.com[/url].
 
-[hr]
-[url=http://creativecommons.org/licenses/by/3.0][img]http://i.creativecommons.org/l/by/3.0/80x15.png[/img][/url]
-This work is licensed under a [url=http://creativecommons.org/licenses/by/3.0]Creative Commons Attribution 3.0 Unported License[/url]
+[color=blue][b][size=12pt][u]License[/u][/size][/b][/color]
+Copyright (c) 2015, Douglas Orend
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
