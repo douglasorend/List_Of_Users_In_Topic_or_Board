@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Dougiefresh:UsersInBoardTopic</id>
+<name>List Of Users In Board/Topic</name>
+<version>1.0</version>
+
+<!-------------------------------------------------------------------------->
+<!-- Language file edits (English - Modifications & PersonalMessage)      -->
+<!-------------------------------------------------------------------------->
+<file name="$languagedir/index.english-utf8.php" error="skip">
+	<operation>
+		<search position="before"><![CDATA[// Locale (strftime, pspell_new) and spelling. (pspell_new, can be left as '' normally.)]]></search>
+		<add><![CDATA[
+$txt['users_browsing_topic'] = 'Users browsing this topic';
+$txt['users_browsing_board'] = 'Users browsing this board';
+
+]]></add>
+	</operation>
+</file>
+<file name="$languagedir/ManagePermissions.english-utf8.php" error="skip">
+	<operation>
+		<search position="replace"><![CDATA[$txt['permissionname_search_posts'] = 'Search for posts and topics';]]></search>
+		<add><![CDATA[$txt['permissionname_view_users_in_topic'] = 'View users browsing topics';
+$txt['permissionhelp_view_users_in_topic'] = 'This permission allows users to see who is also browsing the topic they are in.';
+$txt['permissionname_view_users_in_board'] = 'View users browsing boards';
+$txt['permissionhelp_view_users_in_board'] = 'This permission allows users to see who is also browsing the board they are in.';
+]]></add>
+	</operation>
+</file>
+</modification>

@@ -1,0 +1,287 @@
+<?xml version="1.0"?>
+<!DOCTYPE modification SYSTEM "http://www.simplemachines.org/xml/modification">
+<modification xmlns="http://www.simplemachines.org/xml/modification" xmlns:smf="http://www.simplemachines.org/">
+<id>Dougiefresh:UsersInTopic</id>
+<name>List Of Users In Topic</name>
+<version>1.0</version>
+	
+<file name="$sourcedir/BoardIndex.php">
+	<operation>
+		<search position="replace"><![CDATA[$context['show_who'] = allowedTo('who_view') && !empty($modSettings['who_enabled']);]]></search>
+		<add><![CDATA[$context['show_who'] = allowedTo('who_view');]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/Display.php">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))]]></search>
+		<add><![CDATA[if (allowedTo('view_users_in_topic'))]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/ManagePermissions.php">
+	<operation>
+		<search position="replace"><![CDATA['who_view' => array(false, 'general', 'view_basic_info'),]]></search>
+		<add><![CDATA['who_view' => array(false, 'general', 'view_basic_info'),
+			'view_users_in_board' => array(false, 'general', 'view_basic_info'),
+			'view_users_in_topic' => array(false, 'general', 'view_basic_info'),]]></add>
+	</operation>
+</file>
+<file name="$sourcedir/MessageIndex.php">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))]]></search>
+		<add><![CDATA[if (allowedTo('view_users_in_board'))]]></add>
+	</operation>
+</file>
+<file name="$boarddir/Themes/core/Display.template.php" error="skip">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
+	{
+		echo '
+	<div id="whoisviewing" class="smalltext headerpadding windowbg2">';
+
+		// Show just numbers...?
+		if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+		// Or show the actual people viewing the topic?
+		else
+			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
+	</div>';
+	}]]></search>
+		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
+	if (!empty($settings['display_who_viewing']))
+	{
+		echo '
+	<div id="whoisviewing" class="smalltext headerpadding windowbg2">';
+
+		// Show just numbers...?
+		if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+		// Or show the actual people viewing the topic?
+		else
+			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
+	</div>';
+	}
+	/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+	</operation>
+	<operation>
+		<search position="replace"><![CDATA[// Show the jumpto box, or actually...let Javascript do it.]]></search>
+		<add><![CDATA[// Show everybody who has viewed this topic within the last 15 minutes:
+	if (isset($context['view_members_list']))
+	{
+		echo '
+				<br class="clear" />
+				<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
+				<div class="plainbox">' . $txt['users_browsing_topic'] . ':<br/>';
+
+		// Show the actual people viewing the topic
+		echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
+		
+		echo '</div>';
+	}
+	
+	// Show the jumpto box, or actually...let Javascript do it.]]></add>
+	</operation>
+</file>
+<file name="$boarddir/Themes/core/MessageIndex.template.php" error="skip">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
+		{
+			echo '
+						<tr class="windowbg2">
+							<td colspan="', !empty($context['can_quick_mod']) ? '8' : '7', '" class="headerpadding smalltext">';
+			if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+			else
+				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) or $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'], '
+							</td>
+						</tr>';
+		}]]></search>
+		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
+		if (!empty($settings['display_who_viewing']))
+		{
+			echo '
+						<tr class="windowbg2">
+							<td colspan="', !empty($context['can_quick_mod']) ? '8' : '7', '" class="headerpadding smalltext">';
+			if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+			else
+				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) or $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'], '
+							</td>
+						</tr>';
+		}
+		/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA[// Show breadcrumbs at the bottom too.
+	echo '
+	<div class="marginbottom">', theme_linktree(), '</div>';]]></search>
+		<add><![CDATA[
+
+	// Show everybody who has viewed this topic within the last 15 minutes:
+	if (isset($context['view_members_list']))
+	{
+		echo '
+		<div class="tborder clearfix" id="topic_icons">
+			<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
+			<div class="windowbg headerpadding">' . $txt['users_browsing_board'] . ':<br/>';
+
+		// Show the actual people viewing the topic
+		echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
+		
+		echo '</div>
+		</div>';
+	}]]></add>
+	</operation>
+</file>
+<file name="$themedir/Display.template.php">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
+	{
+		echo '
+				<p id="whoisviewing" class="smalltext">';
+
+		// Show just numbers...?
+		if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+		// Or show the actual people viewing the topic?
+		else
+			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
+				</p>';
+	}]]></search>
+		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
+	if (!empty($settings['display_who_viewing']))
+	{
+		echo '
+				<p id="whoisviewing" class="smalltext">';
+
+		// Show just numbers...?
+		if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) == 1 ? $txt['who_member'] : $txt['members'];
+		// Or show the actual people viewing the topic?
+		else
+			echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_topic'], '
+				</p>';
+	}
+	/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+	</operation>
+	<operation>
+		<search position="replace"><![CDATA[// Show the jumpto box, or actually...let Javascript do it.]]></search>
+		<add><![CDATA[// Show everybody who has viewed this topic within the last 15 minutes:
+	if (isset($context['view_members_list']))
+	{
+		echo '
+				<br class="clear" />
+				<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
+				<div class="plainbox">' . $txt['users_browsing_topic'] . ':<br/>';
+
+		// Show the actual people viewing the topic
+		echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
+		
+		echo '</div>';
+	}
+	
+	// Show the jumpto box, or actually...let Javascript do it.]]></add>
+	</operation>
+</file>
+<file name="$themedir/MessageIndex.template.php">
+	<operation>
+		<search position="replace"><![CDATA[if (!empty($settings['display_who_viewing']))
+		{
+			echo '
+				<tr class="windowbg2 whos_viewing">
+					<td colspan="', !empty($context['can_quick_mod']) ? '6' : '5', '" class="smalltext">';
+			if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) === 1 ? $txt['who_member'] : $txt['members'];
+			else
+				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) or $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'], '
+					</td>
+				</tr>';
+		}]]></search>
+		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
+		if (!empty($settings['display_who_viewing']))
+		{
+			echo '
+				<tr class="windowbg2 whos_viewing">
+					<td colspan="', !empty($context['can_quick_mod']) ? '6' : '5', '" class="smalltext">';
+			if ($settings['display_who_viewing'] == 1)
+				echo count($context['view_members']), ' ', count($context['view_members']) === 1 ? $txt['who_member'] : $txt['members'];
+			else
+				echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) or $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+			echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'], $txt['who_viewing_board'], '
+					</td>
+				</tr>';
+		}
+		/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+	</operation>
+	<operation>
+		<search position="before"><![CDATA[// Show breadcrumbs at the bottom too.
+	theme_linktree();]]></search>
+		<add><![CDATA[
+
+	// Show everybody who has viewed this topic within the last 15 minutes:
+	if (isset($context['view_members_list']))
+	{
+		echo '
+				<div class="cat_bar"><h3 class="catbg">' . $txt['who_title'] . '</h3></div>
+				<div class="plainbox">' . $txt['users_browsing_board'] . ':<br/>';
+
+		// Show the actual people viewing the topic
+		echo empty($context['view_members_list']) ? '0 ' . $txt['members'] : implode(', ', $context['view_members_list']) . ((empty($context['view_num_hidden']) || $context['can_moderate_forum']) ? '' : ' (+ ' . $context['view_num_hidden'] . ' ' . $txt['hidden'] . ')');
+
+		// Now show how many guests are here too.
+		echo $txt['who_and'], $context['view_num_guests'], ' ', $context['view_num_guests'] == 1 ? $txt['guest'] : $txt['guests'];
+		
+		echo '</div>';
+	}]]></add>
+	</operation>
+</file>
+<file name="$themedir/Settings.template.php">
+	<operation>
+		<search position="replace"><![CDATA[array(
+			'id' => 'display_who_viewing',
+			'label' => $txt['who_display_viewing'],
+			'options' => array(
+				0 => $txt['who_display_viewing_off'],
+				1 => $txt['who_display_viewing_numbers'],
+				2 => $txt['who_display_viewing_names'],
+			),
+			'type' => 'number',
+		),]]></search>
+		<add><![CDATA[/* START COMMENT OUT BY List Of Users in Boards and Topics
+		array(
+			'id' => 'display_who_viewing',
+			'label' => $txt['who_display_viewing'],
+			'options' => array(
+				0 => $txt['who_display_viewing_off'],
+				1 => $txt['who_display_viewing_numbers'],
+				2 => $txt['who_display_viewing_names'],
+			),
+			'type' => 'number',
+		),
+		/* END COMMENT OUT BY List Of Users in Boards and Topics */]]></add>
+	</operation>
+</file>
+</modification>
